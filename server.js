@@ -11,8 +11,9 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 
+
 // connect to mongodb
-mongoose.connect('mongodb://localhost/movie_rating_app',{ useNewUrlParser: true }, () => {
+mongoose.connect('mongodb://localhost/movie_rating_app', { useNewUrlParser: true }, () => {
     console.log('Connection has been made');
 }).catch(err => {
     console.error('App starting error:', err.stack);
@@ -21,9 +22,9 @@ mongoose.connect('mongodb://localhost/movie_rating_app',{ useNewUrlParser: true 
 
 // Include controllers
 fs.readdirSync("controllers").forEach(function (file) {
-    if(file.substr(-3) == ".js") {
-      const route = require("./controllers/" + file)
-      route.controller(app)
+    if (file.substr(-3) == ".js") {
+        const route = require("./controllers/" + file)
+        route.controller(app)
     }
 })
 

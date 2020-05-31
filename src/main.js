@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import vuetify from './plugins/vuetify';
+import VueSwal from 'vue-swal';
 
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
@@ -13,6 +14,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(VueSwal);
 
 Vue.config.productionTip = false;
 
