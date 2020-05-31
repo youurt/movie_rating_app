@@ -19,6 +19,14 @@ mongoose.connect('mongodb://localhost/movie_rating_app', () => {
     process.exit(1);
 });
 
+// Include controllers
+fs.readdirSync("controllers").forEach(function (file) {
+    if(file.substr(-3) == ".js") {
+      const route = require("./controllers/" + file)
+      route.controller(app)
+    }
+})
+
 router.get('/', (req, res) => {
     res.json({ message: 'API Initialized!' })
 });
