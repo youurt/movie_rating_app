@@ -30,5 +30,6 @@ export default new Router({
       name: 'Movie',
       component: Movie,
     },
+    
   ],
 });

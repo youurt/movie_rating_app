@@ -6,17 +6,15 @@
           <div>
             <div class="headline">{{ movie.name }}</div>
             <span class="grey--text"
-              >{{ movie.release_year }} ‧ {{ movie.genre }}</span
+              >{{ movie.release_year }} | {{ movie.genre }} </span
             >
           </div>
         </v-card-title>
         <h6 class="card-title" @click="rate">Rate this movie</h6>
         <v-card-text>
-          {{ movie.description }} 
+          {{ movie.description }}
         </v-card-text>
-         <v-card-text>
-
-        </v-card-text>
+        <v-card-text> </v-card-text>
         <h6 class="card-title" @click="delete_movie">
           Delete this movie
         </h6>
@@ -126,7 +124,7 @@ export default {
         .catch(() => {
           this.$swal("Oh oo!", "Could not add the movie!", "error");
         });
-    },
+    }
   }
 };
 </script>
