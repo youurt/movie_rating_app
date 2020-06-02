@@ -12,9 +12,14 @@
         </v-card-title>
         <h6 class="card-title" @click="rate">Rate this movie</h6>
         <v-card-text>
-          {{ movie.description }}
+          {{ movie.description }} 
         </v-card-text>
-        <h6 class="card-title" @click="delete_movie">Delete this movie</h6>
+         <v-card-text>
+
+        </v-card-text>
+        <h6 class="card-title" @click="delete_movie">
+          Delete this movie
+        </h6>
       </v-card>
     </v-flex>
   </v-layout>
@@ -100,7 +105,6 @@ export default {
         })
         .catch(() => {});
     },
-
     async delete_movie() {
       return axios({
         method: "delete",
@@ -116,17 +120,13 @@ export default {
         }
       })
         .then(() => {
-          this.$swal(
-            "Great!",
-            "Movie deleted successfully!",
-            "success"
-          );
+          this.$swal("Great!", "Movie deleted successfully!", "success");
           this.$router.push({ name: "Home" });
         })
         .catch(() => {
           this.$swal("Oh oo!", "Could not add the movie!", "error");
         });
-    }
+    },
   }
 };
 </script>

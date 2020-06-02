@@ -25,10 +25,11 @@ module.exports.controller = (app) => {
         MovieSchema.remove({
             _id: req.params.id
         },
-            (error, user) => {
-                if (error) { console.error(error); } res.send({ success: true })
-            });
+        (error, user) => {
+            if (error) { console.error(error); } res.send({ success: true })
+        });
     });
+
 
     // rate a movie
     app.post('/movies/rate/:id', (req, res) => {
