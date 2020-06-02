@@ -5,7 +5,9 @@
         <v-card-title primary-title class="card__title--primary">
           <div>
             <div class="headline">
-             {{ movie.name }}
+              <v-btn color="grey" flat v-bind:to="`/movies/${movie._id}`">
+                {{ movie.name }}
+              </v-btn>
             </div>
             <span class="grey--text"
               >{{ movie.release_year }} | {{ movie.genre }}

@@ -1,12 +1,49 @@
 const MovieSchema = require('../models/Movie.js');
+const RatingSchema = require('../models/Rating.js');
 
 module.exports.controller = (app) => {
     // fetch all movies
     app.get('/movies', (req, res) => {
         MovieSchema.find({}, 'name description release_year genre', (error, movies) => {
-            if (error) {console.log(error);}
+            if (error) { console.log(error); }
             res.send({
                 movies,
+            });
+        });
+    });
+
+    // fetch a single movie
+    app.get('/api/movies/:id', (req, res) => {
+        MovieSchema.findById(req.params.id, 'name description release_year genre', (error, movie) => {
+            if (error) { console.log(error); }
+            res.send(movie);
+        });
+    });
+
+    // delete a single movie
+    app.delete('/api/movies/:id', (req, res) => {
+        MovieSchema.remove({
+            _id: req.params.id
+        },
+            (error, user) => {
+                if (error) { console.error(error); } res.send({ success: true })
+            });
+    });
+
+    // rate a movie
+    app.post('/movies/rate/:id', (req, res) => {
+        const newRating = new RatingSchema({
+            movie_id: req.params.id,
+            user_id: req.body.user_id,
+            rate: req.body.rate,
+        })
+
+        newRating.save((error, rating) => {
+            if (error) { console.log(error); }
+            res.send({
+                movie_id: rating.movie_id,
+                user_id: rating.user_id,
+                rate: rating.rate,
             });
         });
     });
@@ -22,7 +59,7 @@ module.exports.controller = (app) => {
         });
 
         newMovie.save((error, movie) => {
-            if (error) {console.log(error);}
+            if (error) { console.log(error); }
             res.send(movie);
         });
     });
